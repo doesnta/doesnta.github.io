@@ -90,7 +90,7 @@ h6 {
 
 .footere{
 	color:white;
-	margin-left: 435px;
+	margin-left: 35px;
 }
 
 .h2e{
@@ -3211,8 +3211,8 @@ footer .footer-top{
 	border-bottom:1px solid #3E3E3E;
 	padding-bottom: 0px;
 }
-footer .copy {
-	float: left;
+footer .copy {   /*copy的位置*/
+	float：left；
 	margin-top: 5px;
 }
 footer .copy p {
