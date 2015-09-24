@@ -87,6 +87,12 @@ h6 {
 	color: #151515;
 }
 /*added by doesnta*/
+
+.footere{
+	color:white;
+	margin-left: 435px;
+}
+
 .h2e{
 	 font-family: 微软雅黑,"Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
      font-style: ;
@@ -339,7 +345,6 @@ hr.title-accent {
 }
 
 /*added by doesnta ,the toc of the post*/
-/*toc*/
 .toc-article
   background #eee
   border 1px solid #bbb
@@ -351,7 +356,7 @@ hr.title-accent {
   font-size 120%
 #toc
   line-height 1em
-  font-size 0.9em
+  font-size 0.9em /*//字体大小*/
   float right
   .toc
     padding 0
@@ -360,7 +365,8 @@ hr.title-accent {
     li
       list-style-type none
   .toc-child 
-    margin-left 1em
+    margin-left 1em /*//二级目录缩进量*/
+
 /********************************************************/
 /* Buttons                                              */
 /********************************************************/
@@ -742,7 +748,7 @@ button.navbar-toggle .icon-bar {/*这是导航那三条线的样式*/
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
-	background-color: #ffffff;
+	background-color: #000000;
 	-webkit-transition: all ease 0.2s;
 	-moz-transition: all ease .2s;
 	-o-transition: all ease .2s;
@@ -781,7 +787,7 @@ html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.sb-slidebar a {/*导航栏链接标签的样式*/
+.sb-slidebar a {
 	color: #666; /* Link colour. */
 	text-decoration: none;
 	font-weight: 700;
@@ -3203,7 +3209,7 @@ footer .footer_lists{
 }
 footer .footer-top{
 	border-bottom:1px solid #3E3E3E;
-	padding-bottom: 60px;
+	padding-bottom: 0px;
 }
 footer .copy {
 	float: left;
