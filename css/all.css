@@ -158,12 +158,12 @@ html[xmlns] .slides {display: block;}
 }
 body {
 	background-color: #FFFFFF;
-	background-color: rgb(255,255,255);
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+	background-color: rgba(255,255,255,0.7);
+    font-family: 微软雅黑,宋体"Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	color: #666;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 16px;
 	line-height: 30px;
 	padding: 0px 0px;
 }
@@ -183,6 +183,7 @@ i {
 b, strong {
 	font-style: normal;
 	font-weight: 700;
+	font-size: 16px;
 }
 h1,
 h2,
@@ -191,14 +192,15 @@ h4,
 h5,
 h6 {
 	margin-top: 0;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif,微软雅黑;
+    font-family: 微软雅黑,"Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	font-weight: 400;
 	font-weight: normal;
 	color: #151515;
 }
 /*added by doesnta*/
 .h2e{
-     font-style: 微软雅黑;
+	 font-family: 微软雅黑,"Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+     font-style: ;
 	font-weight: 300;
 	font-size: 20px;
 	line-height: 10px;
@@ -209,7 +211,7 @@ h2 {
 	text-transform: uppercase;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 22px;
+	font-size: 25px;
 	line-height: 30px;
 	letter-spacing: 3px;
 }
@@ -263,7 +265,7 @@ a:active,
 a:focus,
 a:visited,
 a:link {
-	color: #151515;
+	color: #330000;
 	text-decoration: none;
 }
 
@@ -414,7 +416,7 @@ input#delivery {
 .herofade,
 .headerfade,
 .videofade {
-	background-color: #666666;
+	background-color:rgba(68,68,68,0.8);
 	width: 100%;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	-khtml-opacity: .8;
@@ -446,6 +448,30 @@ hr.title-accent {
 	border-top: none;
 	margin: 20px auto;
 }
+
+/*added by doesnta ,the toc of the post*/
+/*toc*/
+.toc-article
+  background #eee
+  border 1px solid #bbb
+  border-radius 10px
+  margin 1.5em 0 0.3em 1.5em
+  padding 1.2em 1em 0 1em
+  max-width 28%
+.toc-title
+  font-size 120%
+#toc
+  line-height 1em
+  font-size 0.9em
+  float right
+  .toc
+    padding 0
+    margin 1em
+    line-height 1.8em
+    li
+      list-style-type none
+  .toc-child 
+    margin-left 1em
 /********************************************************/
 /* Buttons                                              */
 /********************************************************/
@@ -760,7 +786,7 @@ nav i.icon-basic-eye {
 #sb-site {
 	min-height:100% !important;
 }
-.learnmore {
+.learnmore {/*这里是more字符的css*/
 	position: absolute;
 	right: 0;
 	padding-right: 74px;
@@ -823,11 +849,11 @@ html.sb-init.sb-active.sb-active-right .menu-icon .after {
 }
 
 
-button.navbar-toggle .icon-bar {
+button.navbar-toggle .icon-bar {/*这是导航那三条线的样式*/
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
-	background-color: #151515;
+	background-color: #ffffff;
 	-webkit-transition: all ease 0.2s;
 	-moz-transition: all ease .2s;
 	-o-transition: all ease .2s;
@@ -856,8 +882,8 @@ html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
 	-moz-opacity: 1;
 	opacity: 1;
 }
-.sb-slidebar {
-	background-color: #CDB99C; /* Background colour. */
+.sb-slidebar {/*这是导航栏的css样式，可以改背景颜色*/
+	background-color: #C5C0BE; /* Background colour. */
 	color: #666; /* Text colour. */
 	font-weight: 700;
 	font-size: 14px;
@@ -866,7 +892,7 @@ html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.sb-slidebar a {
+.sb-slidebar a {/*导航栏链接标签的样式*/
 	color: #666; /* Link colour. */
 	text-decoration: none;
 	font-weight: 700;
@@ -898,7 +924,7 @@ html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
 .sb-menu > li:last-child {
 	border-bottom: none; /* Removed bottom border from last list item. */
 }
-.sb-menu li a {
+.sb-menu li a {/*这里是导航栏内链接标签的样式，可以改变字体颜色*/
 	font-family: 'Open Sans', Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	width: 100%; /* Makes links full width. */
 	display: inline-block;
@@ -1133,7 +1159,7 @@ span.sb-caret { /* Caret Down */
 }
 
 .titleblock p {
-	color: #333
+	color: #333;
 }
 
 .titleblock i {
@@ -3221,7 +3247,7 @@ button.send{
 ******************************************************* */
 footer {
 	padding:5% 0 0;
-	background:#26221D;
+	background:#330000;
 	z-index: 9;
 	position: relative;
 }
@@ -3421,7 +3447,7 @@ footer .footer_bottom {
 	border-radius: 20px;
 }
 .readMore a:hover {
-	background-color: gray;
+	background-color: #CDB99C;
 	color: #fff;
 }
 .pagination {
@@ -3442,7 +3468,7 @@ footer .footer_bottom {
   	margin-bottom: 10px;
 }
 .pagination a:hover{
-	background-color: gray;
+	background-color: #CDB99C;
 	color: #fff;
 }
 .duoshuo {

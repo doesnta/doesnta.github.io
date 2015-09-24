@@ -35,9 +35,9 @@ $(document).ready(function($) {
 	        boxzoom: false,
 	        cursorborder: "0 solid #202020",
 	        cursorborderradius: "5px",
-	        cursorwidth: 9,
+	        cursorwidth: 7,
 	        enablemousewheel: true,
-	        background: "rgba(255,255,255,0.85)",
+	        background: "rgba(255,255,255,0.7)",
 		});
 
 		// Page transitions
@@ -82,7 +82,7 @@ $(document).ready(function($) {
 		            var st = $(this).scrollTop();
 		            divs.css({
 		                'margin-top': -(st / 0) + "px",
-		                'opacity': 0.8 - st / 800
+		                'opacity': 0.8 - st / 1600
 		            });
 		        });
 		    });
