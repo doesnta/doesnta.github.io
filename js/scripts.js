@@ -21,12 +21,13 @@ $(document).ready(function($) {
 			.popover({
 				html:true
 			}
+       
 		);
 
 		$("html").niceScroll({
 			smoothscroll: true, // scroll with ease movement
 			autohidemode: false,
-			zindex: "100", // change z-index for scrollbar div
+			zindex: "150", // change z-index for scrollbar div
         	scrollspeed: 60, // scrolling speed
         	mousescrollstep: 40,
         	gesturezoom: false,
@@ -185,5 +186,6 @@ $(document).ready(function($) {
 			} else {
 			$submenu.slideUp(200);
 		}
-	});
+
+			});
 });
