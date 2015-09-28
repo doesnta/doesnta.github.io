@@ -1,7 +1,6 @@
-$(document).beforeready=function(){
-    alert("fsdf");
-           
- };
+ $(document).ready(function(){
+   window.scrollBy(0,hero.offsetHeight);
+ });
 
 
        
