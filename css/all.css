@@ -182,8 +182,8 @@ i {
 }
 b, strong {
 	font-style: normal;
-	font-weight: 500;
-	font-size: 16px;
+	font-weight: 700;
+	
 }
 h1,
 h2,
@@ -290,7 +290,7 @@ blockquote {
 blockquote p {
 	font-family: 'Georgia', "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	font-style: italic;
-	font-size: 15px;
+	font-size: 16px;
 }
 blockquote footer {
 	background-color: transparent;

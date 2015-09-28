@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-25T13:45:43.930Z</updated>
+  <updated>2015-09-27T16:56:09.517Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,16 +19,66 @@
     <link href="http://yoursite.com/2015/09/24/Java-SSH%E6%A1%86%E6%9E%B6%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
     <id>http://yoursite.com/2015/09/24/Java-SSH框架项目经验总结/</id>
     <published>2015-09-24T13:41:24.000Z</published>
-    <updated>2015-09-25T13:45:43.930Z</updated>
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;做完了好久的SSH项目，一直都忘了给个大总结。懒也罢，忙也罢。今天也是时候好好写写SSH那些事了。虽然草草率率地完成了项目，但是也学到了不少东西，毕竟是自己第一次做框架这么大的SSH项目。 </p>
- <a id="more"></a>             
-<h2 id="开始做SSH项目需要注意的事">开始做SSH项目需要注意的事</h2><p> <br>    </p>
+    <updated>2015-09-27T16:56:09.517Z</updated>
+    <content type="html"><![CDATA[<p>做完了好久的SSH项目，一直都忘了给个大总结。懒也罢，忙也罢。今天也是时候好好写写SSH那些事了。虽然草草率率地完成了项目，但是也学到了不少东西，毕竟是自己第一次做框架这么大的SSH项目。 </p>
+ <a id="more"></a> 
+<p> <br>             </p>
+<h2 id="开始做SSH项目需要注意的事">开始做SSH项目需要注意的事</h2><p> <br>   </p>
 <h3 id="风格统一，规则统一。">风格统一，规则统一。</h3><blockquote>
-<p>1.<strong>一定特别注意Spring部分到底使用配置方法还是使用注解方法。两者不得兼得</strong><br>2.<strong>如果数据库有公共表不能使用外键方式操作数据库的，要再三和团队成员确认。</strong><br>3.<strong>包,变量,类名都要统一规定。严格执行。会给后面的项目整合带来极大便利。</strong><br>不过我不建议使用公共表。因为使用外键才能最大程度地发挥Hibernate的优势。而且公共表在项目集成的阶段也很容易出错，从数据存储的角度来说，非常不友好，只适用于小型项目。</p>
+<p>1.一定特别注意Spring部分到底使用配置方法还是使用注解方法。两者不得兼得。<br>2.如果数据库有公共表不能使用外键方式操作数据库的，要再三和团队成员确认。<br>3.包,变量,类名都要统一规定。严格执行。会给后面的项目整合带来极大便利。       </p>
 </blockquote>
+<p>不过我不建议使用公共表。虽然使用公共表，在数据库操作实现上差距不大，（区别就是一个在数据库表中设置了外键，一个没有）,而且数据也是完全可以拿到。(<code>因为hibernate并不关注数据库中你们是否有约束关系，哪怕有，你也可以在配置文件不写</code>)但是好几个部分公用一张表，增加了集成难度。从后期管理数据角度来说，也非常不友好。</p>
+<p><br></p>
+<h2 id="开始用框架思维思考问题">开始用框架思维思考问题</h2><h3 id="或许你的struts2应该这么写">或许你的struts2应该这么写</h3><p>因为这个项目与各种申请表相关，所以我们在后台一次性要拿到三四十个数据。如果不用框架做的话，可想而知，光是写getParameter都要写多少次。虽然struts有自动赋值的功能，省下了某些同学拿值的时间。但是某些同学就是不珍惜哦。面对一个action要拿到巨量数据的时候，他们反而开始乖乖地一个个地在action里面定义表属性了。       </p>
+<blockquote>
+<p>以Person表为例，Person里面有七八个属性。要从页面上拿值。有些同学乖乖在页面姓名一栏的name写上Pname，然后在action里面定义private String Pname,如此一来，action第一页就被写满了定义。一张表看起来还好，但如果不只七八个属性呢？如果是近半百的数据量呢？也要一个个地写定义吗？                 </p>
+</blockquote>
+<p><strong>这压根就不是struts2正确的打开方式！</strong></p>
+<p><strong>其实只要在action定义private  Person person，在页面的name中写person.属性名，struts2就会将这个值赋值给person，前提是这个值在Person 实体类中有定义。输出到页面也是如此（数据库有木有它不管）</strong>           </p>
+<p><br> </p>
+<h3 id="开始用getHibernateTemplate操作数据">开始用getHibernateTemplate操作数据</h3><p>hibernate操作数据库相对于JDBC非常简单。举例说明：        </p>
+<blockquote>
+<p>想插入一整张Person表的元素，可以直接写this.getHibernateTemplate().save(person);(要继承HibernateDaoSupport) ，如果没有某种方法，可以用Query query=getSession().createQuery()进行操作        </p>
+</blockquote>
+<p>Hibernate还提供多种操作数据库的方法.(当然，各有优劣)。你可以发挥自己无限的想象力去写数据库语句。比如this.getHibernateTemplate().update(person)是更新操作，但是一般只更新几个字段的话。可以直接用query查询出这张表，然后在其后set相关值就可以更新成功。   </p>
+<p><br>     </p>
+<h3 id="或许你的hibernate多表连接应该这样写">或许你的hibernate多表连接应该这样写</h3><blockquote>
+<p>用SQL写的四表连接，写完就想自杀:                 </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="keyword">P</span> . <span class="keyword">NAME</span>,</span><br><span class="line">  <span class="keyword">P</span> .workadd,</span><br><span class="line">  pp. <span class="keyword">NAME</span>,</span><br><span class="line">  pp.workadd,</span><br><span class="line">  <span class="keyword">l</span>.datetime,</span><br><span class="line">  <span class="keyword">l</span>.donetime,</span><br><span class="line">  s.sname</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  PERSON <span class="keyword">P</span></span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> PERSON pp <span class="keyword">ON</span> <span class="keyword">P</span> .zjid = pp.zjid</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> LDRK <span class="keyword">l</span> <span class="keyword">ON</span> <span class="keyword">l</span>.ldrkid = pp.zjid</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> SPZT s <span class="keyword">ON</span> s. <span class="keyword">SID</span> = <span class="keyword">l</span>.spztid;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用hibernate 写同样的操作，如此简单：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span>  <span class="keyword">distinct</span> <span class="keyword">l</span> <span class="keyword">from</span> Ldrk <span class="keyword">l</span> <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.persons <span class="keyword">p</span> <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.persons pp <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.childrens <span class="keyword">left</span> <span class="keyword">join</span> <span class="keyword">l</span>.spzt  s</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="在页面中做判断">在页面中做判断</h3><p>如果我们要在页面上把拿到的person的男方部分放在前面，女方部分放在后面。（<code>注意，如果关联两表，hibernate输出位置的前后是随机的</code>）（在传统的JavaBean+Servlet+jsp的模式中，一般都是在action中做判断，再输出到页面相关位置。但是正如我前面说的。取值的方式是在action中定义Person person，输出自然也是person.属性名。而且得到的是List，要在action进行判断并不容易。                 </p>
+<p>这时候我们就需要在页面上做判断。下面是一个嵌套循环输出的demo.         </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="title">s:iterator</span> <span class="attribute">value</span>=<span class="value">"ls"</span> <span class="attribute">var</span>=<span class="value">"l"</span> &gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="title">s:iterator</span>  <span class="attribute">value</span>=<span class="value">"persons"</span> <span class="attribute">var</span>=<span class="value">"p"</span> &gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">s:if</span> <span class="attribute">test</span>=<span class="value">"gender=='男'.toString()"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"workadd"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">s:if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">s:iterator</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">s:iterator</span>  <span class="attribute">value</span>=<span class="value">"persons"</span> <span class="attribute">var</span>=<span class="value">"p"</span> &gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">s:if</span> <span class="attribute">test</span>=<span class="value">"gender=='女'.toString()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"workadd"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="title">s:if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">s:iterator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不知道大家注意到没有，iterator里面的value都是直接写属性名，而不是l.persons,看见了吗，这可就是ssh框架的优势了呢。                  </p>
+<p><br></p>
+<h2 id="用SSH框架你的脑子需要更活一点">用SSH框架你的脑子需要更活一点</h2><p><br> </p>
+<h3 id="关于hibernate分页的思考">关于hibernate分页的思考</h3><p>因为在做项目的时候，了解到hibernate有两个关于分页的函数。query.setFirstResult();query.setMaxResults();第一个是输出的一个元素，第二个是最多取出多少值。运用这两个函数我们就可以灵活地而简单地操作分页。我谷歌了一下网上有什么用这两个函数做分页的方法（主要是想看有什么我没想到的好方法）。发现大多数人还是用的JavaBean+Servlet+jsp的那套方法做的分页。有些同学甚至连这两个hibernate提供的分页函数都不知道。</p>
+<blockquote>
+<p>JavaBean+Servlet+jsp分页实体示例：                     </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> pageSize;<span class="comment">//页面大小</span></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> total;<span class="comment">//总数量</span></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> totalPage;<span class="comment">//总共页码</span></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> pageIndex;<span class="comment">//当前页码</span></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> start;<span class="comment">//当前页起始位置</span></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> end;<span class="comment">//当前页结束位置</span></span><br><span class="line">       </span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">Page</span><span class="params">(<span class="keyword">int</span> pageSize,<span class="keyword">int</span> pageIndex,<span class="keyword">int</span> totalPage)</span></span>&#123;</span><br><span class="line">         <span class="keyword">super</span>();</span><br><span class="line">         <span class="keyword">this</span>.pageSize=pageSize;</span><br><span class="line">         <span class="keyword">this</span>.pageIndex=pageIndex;</span><br><span class="line">         <span class="keyword">this</span>.totalPage=totalPage;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPageSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pageSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPageSize</span><span class="params">(<span class="keyword">int</span> pageSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.pageSize = pageSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTotal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTotal</span><span class="params">(<span class="keyword">int</span> total)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.total = total;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTotalPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> total%pageSize==<span class="number">0</span>?total/pageSize:total/pageSize+<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTotalPage</span><span class="params">(<span class="keyword">int</span> totalPage)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.totalPage = totalPage;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPageIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pageIndex;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPageIndex</span><span class="params">(<span class="keyword">int</span> pageIndex)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.pageIndex=pageIndex;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pageIndex = (pageIndex-<span class="number">1</span>)*pageSize-<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStart</span><span class="params">(<span class="keyword">int</span> start)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.start = start;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getEnd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pageIndex*pageSize;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEnd</span><span class="params">(<span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.end = end;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>数据库操作局部示例：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PreparedStatement ps = conn.prepareStatement("<span class="operator"><span class="keyword">select</span> ee.* <span class="keyword">from</span> <span class="string">" +</span><br><span class="line">        "</span>(<span class="keyword">select</span> <span class="keyword">e</span>.*,<span class="keyword">rownum</span> r <span class="keyword">from</span> <span class="string">" +</span><br><span class="line">        "</span>(<span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">order</span> <span class="keyword">by</span> hiredate) <span class="keyword">e</span> ) ee<span class="string">" +</span><br><span class="line">        "</span> <span class="keyword">where</span> ee.r &gt;=? <span class="keyword">and</span> ee.r&lt;=?<span class="string">");</span><br><span class="line">    ps.setInt(1, start);</span><br><span class="line">    ps.setInt(2, end);</span></span></span><br></pre></td></tr></table></figure>
+<p>从上面的实体和数据库操作看来，我们在数据库操作时需要知道页面的第一个值和最后一个值，所以我们在定义page的时候，要知道pageindex和pagesize。（看看getstart和getend函数）count和totalpage是输出到页面和用作判断的条件。但是我们知道hibernate可以用setMaxResult设置一个分页的数据最大值。我们还需要设置end吗？total和totalpage能否可以直接放到action中拿值和做处理呢？  </p>
+<p><br>         </p>
+<h3 id="如何处理“幽灵数据”">如何处理“幽灵数据”</h3><p>“幽灵数据”是我对那些不跟数据库打交道或者不与数据库有直接关联的数据的戏称。有没有同学做项目的时候很奇怪，为什么要建service和serviceimpl包，除了在分离底层逻辑上的操作步骤之外。service包还有什么效果呢？ </p>
+<p>举个例子，购物车中添加的商品需要跟数据库打交道吗？当然不需要，这时候就需要service包的存在了。将购物车的数据在service包管理，隔绝了servlet和jdbc层，后期维护更加简单。同样，SSH中也有处理幽灵数据的时候，这时候就说entity类发挥功效的时候了。<br>在做项目时遇到这么个问题：</p>
+<blockquote>
+<p>查询功能有个时间约束，大于某某时间和小于某某时间进行查询。但是我们知道数据库里时间属性只有一个，现在要从页面拿两个值，怎么办才好呢？            </p>
+</blockquote>
+<p>这时候我们可以借助entity类建一个datetime2，但是在xml中不配置此日期。（如果配置了，Hibernate会自动为你在数据库生成这么一个属性）就可以轻易借助entity的外壳拿到页面数据（<code>还记得前面说的person.属性名吗？只要实体中有定义，就可以用这方法拿到值，而不在乎数据库是否有这个属性</code>），并且输送到Dao层。只要在DaoImpl层判断小于小于就行了。是不是很简单呢？      </p>
+<p><br></p>
+<h2 id="本文总结">本文总结</h2><p>SSH是javaWeb十分常用的三大框架。在企业级应用尤为常见。在大型应用中表现极佳。如果你去找java工作的话，基本上没有不问到SSH框架方面的知识的。Spring方面是SSH框架的重难点，应该多花时间钻研。像aop之类看似简单，但是大多数人只是只知其面，不知其理。当然javaWeb还有springMVC,mybatis等等流行框架，各有优点。在这里就不再深入讨论了。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>&nbsp;&nbsp;做完了好久的SSH项目，一直都忘了给个大总结。懒也罢，忙也罢。今天也是时候好好写写SSH那些事了。虽然草草率率地完成了项目，但是也学到了不少东西，毕竟是自己第一次做框架这么大的SSH项目。 </p>]]>
+    <![CDATA[<p>做完了好久的SSH项目，一直都忘了给个大总结。懒也罢，忙也罢。今天也是时候好好写写SSH那些事了。虽然草草率率地完成了项目，但是也学到了不少东西，毕竟是自己第一次做框架这么大的SSH项目。 </p>]]>
     
     </summary>
     
@@ -45,7 +95,7 @@
     <link href="http://yoursite.com/2015/09/23/Hexo%E4%B8%80%E4%B8%8B%EF%BC%8C%E4%BD%A0%E5%B0%B1%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2015/09/23/Hexo一下，你就博客/</id>
     <published>2015-09-23T14:33:25.000Z</published>
-    <updated>2015-09-25T13:24:50.626Z</updated>
+    <updated>2015-09-26T15:16:32.935Z</updated>
     <content type="html"><![CDATA[<p>&nbsp;&nbsp;一直苦于自己写的文章无处安放。但是囿于国内技术博客极其美丽和高雅的UI设计，一直不敢踏下那一步。之前就听过可以用github建博客，在网上偶见几个github建博客的教程，收藏了，记着，也念着。但是终究没有时间去做的。<br><a id="more"></a><br>&nbsp;&nbsp;也就上个星期左右吧。忽地鬼迷心窍似的，硬要把这个个人博客搞出来不可。不搞出来还真不行了。<br>风风火火地就把以前收藏的好家伙都亮出来。照着HEXO的教程圆润地做起来。期间遇到了两个千年都遇不到的奇BUG，差点就想放弃了。           </p>
 <p>&nbsp;&nbsp;给大家分享经验的同时，纪念一次青春期似的莽撞的小悸动，回顾一次勇士般的除BUG路，或许这才<br>是我写下这篇文章的用意吧。</p>
 <p>==========================</p>
@@ -53,14 +103,14 @@
 <h2 id="申请github_账号。">申请<a href="https://github.com/" title="github" target="_blank" rel="external">github</a> 账号。</h2><p>这步非常的简单。                   </p>
 <p>但是注意：           </p>
 <blockquote>
-<p>1.1：<strong>用户名首字母一定要小写！！！！大写的能注册，但是不能建立博客。</strong><br>1.2: <strong>邮箱一定要是能用的邮箱，github重要的信息都是通过邮件发给你的。</strong>  </p>
+<p>1.1：用户名首字母一定要小写！！！！大写的能注册，但是不能建立博客。<br>1.2: 邮箱一定要是能用的邮箱，github重要的信息都是通过邮件发给你的。 </p>
 </blockquote>
 <p><br>  </p>
 <h2 id="建立github仓库。">建立github仓库。</h2><p>点击new就可以新建仓库。(在右上角头像的YourProfile个人主页里面)</p>
 <p><img src="http://ww2.sinaimg.cn/mw690/68618da8gw1ewclzvtjbvj20kx07iglz.jpg" alt="仓库示例图"></p>
 <p>这里要注意两点：</p>
 <blockquote>
-<p>2.1: <strong>仓库名是  你的用户名.github.io,这是固定格式，不能改变。</strong><br>2.2：<strong>注意不要写成大写了。</strong>           </p>
+<p>2.1: 仓库名是  你的用户名.github.io,这是固定格式，不能改变。<br>2.2：注意不要写成大写了。          </p>
 </blockquote>
 <p>如果还有问题请参照这位同学写的：<a href="http://www.pchou.info/web-build/2013/01/05/build-github-blog-page-02.html" target="_blank" rel="external">一步步在GitHub上创建博客主页(2)</a></p>
 <p>ps:点击桌面任何地方，鼠标右键就有gitbash选项,如果没有的话，在win的开机菜单栏下会有的。再没有就用搜索功能吧。        </p>
@@ -76,13 +126,13 @@
 <h2 id="配置sshkey">配置sshkey</h2><p>详情可以看素封同学的教程，非常详细。<a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/\#ssh-keys-1" target="_blank" rel="external">配置sshkey</a><br>或者beiyuu同学的教程。<a href="http://beiyuu.com/github-pages/" target="_blank" rel="external">使用Github Pages建独立博客</a><br>如果你看得懂英文，github的官方文档是最好懂的。 <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">Generating SSH keys</a>        </p>
 <p>这里注意两点：         </p>
 <blockquote>
-<p>4.1:<strong>输入密码的时候命令行是没有东西的，你的键盘没有问题</strong><br>4.2:<strong>拿到sshkey还有个简单的方法，打开gitgui,帮助下面有个showsshkey。</strong><br>4.3：<strong>务必一字不错地复制到github，不然会链接不上</strong><br>4.4：<strong>SSH文件一般是在c盘的user（win10是用户）文件夹下有个.ssh文件夹，找不到可以直接搜索.ssh,</strong>                   </p>
+<p>4.1:输入密码的时候命令行是没有东西的，你的键盘没有问题<br>4.2:拿到sshkey还有个简单的方法，打开gitgui,帮助下面有个showsshkey。<br>4.3：务必一字不错地复制到github，不然会链接不上<br>4.4：SSH文件一般是在c盘的user（win10是用户）文件夹下有个.ssh文件夹，找不到可以直接搜索.ssh,                </p>
 </blockquote>
 <p><br></p>
 <h2 id="安装HEXO">安装HEXO</h2><p>详情看赵伟同学的教程。很简单。只要几个命令就可以了。<br><a href="http://zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">hexo系列教程：（二）搭建hexo博客</a>         </p>
 <p>在这里要注意几个事情：      </p>
 <blockquote>
-<p>5.1:<strong>现在版本的deploy文件的type都不写github了，改成git了</strong><br>5.2:<strong>hexo generate 还有 hexo deploy 可以用hexo g 和 hexo d 代替</strong><br>5.3:<strong>deploy文件的repository建议写成 git@github.com:你的用户名/你的用户名.github.io.git，这样就不用每次deploy都写账户和密码了。</strong><br>5.4:<strong>所有的hexo操作都必须在hexo的文件夹中进行，不然无效。在hexo文件夹下右键gitbash就行</strong>                           </p>
+<p>5.1:现在版本的deploy文件的type都不写github了，改成git了<br>5.2:hexo generate 还有 hexo deploy 可以用hexo g 和 hexo d 代替<br>5.3:deploy文件的repository建议写成 git@github.com:你的用户名/你的用户名.github.io.git，这样就不用每次deploy都写账户和密码了。<br>5.4:所有的hexo操作都必须在hexo的文件夹中进行，不然无效。在hexo文件夹下右键gitbash就行                          </p>
 </blockquote>
 <p><br></p>
 <h2 id="配置和使用HEXO">配置和使用HEXO</h2><p>详情请看赵伟同学系列的教程。<a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">hexo系列教程：（三）搭建hexo博客</a> </p>
@@ -99,7 +149,7 @@
 </blockquote>
 <p>然后把下下来的文件夹复制到hexo的theme文件夹下。把hexo下面config.yml(注意是hexo下面的，不是主题文件夹下面的那个)theme 属性改为你要替换的主题的文件夹名。</p>
 <blockquote>
-<p>7.1:<strong>修改config文件一定要注意，属性后面写值都要空格，不要deploy会报错。</strong><br>7.2:<strong>更换主题后删除.deploy_git还有db.json文件，重新再hexo g 然后hexo d,不然会出错</strong><br>7.3:<strong>对内容进行更改之后都需要重新hexo g 然后hexo d 才有效果，如果只是本地测试的话不需要。</strong><br>7.4:<strong>上传内容后github需要一两分钟反应，稍等一下。</strong>             </p>
+<p>7.1:修改config文件一定要注意，属性后面写值都要空格，不要deploy会报错。<br>7.2:更换主题后删除.deploy_git还有db.json文件，重新再hexo g 然后hexo d,不然会出错<br>7.3:对内容进行更改之后都需要重新hexo g 然后hexo d 才有效果，如果只是本地测试的话不需要。<br>7.4:上传内容后github需要一两分钟反应，稍等一下。           </p>
 </blockquote>
 <p><br></p>
 <h2 id="我遇到的两个千年难遇的bug">我遇到的两个千年难遇的bug</h2><p>&nbsp;&nbsp;说是千年难遇一点都不夸张，第一个完全不知道咋回事，错误信息是：    </p>
@@ -134,28 +184,6 @@
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
       <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="http://yoursite.com/2015/09/19/hello-world/"/>
-    <id>http://yoursite.com/2015/09/19/hello-world/</id>
-    <published>2015-09-18T18:01:03.747Z</published>
-    <updated>2015-09-18T18:01:03.747Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
-    </summary>
     
   </entry>
   

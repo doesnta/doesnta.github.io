@@ -17,6 +17,7 @@
 <!--<![endif]-->
 
 <head>
+<meta name="baidu-site-verification" content="OqBDsVnJX8" />
   <title>Hexo一下，你就博客 | Doesnta&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
@@ -33,7 +34,7 @@
     <link rel="alternate" href="/atom.xml" title="Doesnta&#39;s Blog" type="application/atom+xml">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
 	
-    <link rel="stylesheet" href="/highlightjs/dark.css" type="text/css">
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
     
     
 
@@ -177,7 +178,8 @@
 
         <!-- ============================ Hero Image =========================== -->
 
-        <section id="hero" class="scrollme">
+        <section id="hero" class="scrollme" >
+       
             <div class="container-fluid element-img" style="background: url(/img/1.jpg) no-repeat center center fixed;background-size: cover">
                 <div class="row">
                     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
@@ -199,6 +201,7 @@
                 </div>
                 <div class="herofade "></div>
             </div>
+           
         </section>
           
         <!-- Height spacing helper -->
@@ -208,6 +211,7 @@
     
         <!-- ============================ END Hero Image =========================== -->
       
+
 <section id="intro">
     <div class="container">
         <div class="row col-md-offset-2" id="s1">
@@ -242,14 +246,14 @@
 <h2 id="申请github_账号。">申请<a href="https://github.com/" title="github" target="_blank" rel="external">github</a> 账号。</h2><p>这步非常的简单。                   </p>
 <p>但是注意：           </p>
 <blockquote>
-<p>1.1：<strong>用户名首字母一定要小写！！！！大写的能注册，但是不能建立博客。</strong><br>1.2: <strong>邮箱一定要是能用的邮箱，github重要的信息都是通过邮件发给你的。</strong>  </p>
+<p>1.1：用户名首字母一定要小写！！！！大写的能注册，但是不能建立博客。<br>1.2: 邮箱一定要是能用的邮箱，github重要的信息都是通过邮件发给你的。 </p>
 </blockquote>
 <p><br>  </p>
 <h2 id="建立github仓库。">建立github仓库。</h2><p>点击new就可以新建仓库。(在右上角头像的YourProfile个人主页里面)</p>
 <p><img src="http://ww2.sinaimg.cn/mw690/68618da8gw1ewclzvtjbvj20kx07iglz.jpg" alt="仓库示例图"></p>
 <p>这里要注意两点：</p>
 <blockquote>
-<p>2.1: <strong>仓库名是  你的用户名.github.io,这是固定格式，不能改变。</strong><br>2.2：<strong>注意不要写成大写了。</strong>           </p>
+<p>2.1: 仓库名是  你的用户名.github.io,这是固定格式，不能改变。<br>2.2：注意不要写成大写了。          </p>
 </blockquote>
 <p>如果还有问题请参照这位同学写的：<a href="http://www.pchou.info/web-build/2013/01/05/build-github-blog-page-02.html" target="_blank" rel="external">一步步在GitHub上创建博客主页(2)</a></p>
 <p>ps:点击桌面任何地方，鼠标右键就有gitbash选项,如果没有的话，在win的开机菜单栏下会有的。再没有就用搜索功能吧。        </p>
@@ -265,13 +269,13 @@
 <h2 id="配置sshkey">配置sshkey</h2><p>详情可以看素封同学的教程，非常详细。<a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/\#ssh-keys-1" target="_blank" rel="external">配置sshkey</a><br>或者beiyuu同学的教程。<a href="http://beiyuu.com/github-pages/" target="_blank" rel="external">使用Github Pages建独立博客</a><br>如果你看得懂英文，github的官方文档是最好懂的。 <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">Generating SSH keys</a>        </p>
 <p>这里注意两点：         </p>
 <blockquote>
-<p>4.1:<strong>输入密码的时候命令行是没有东西的，你的键盘没有问题</strong><br>4.2:<strong>拿到sshkey还有个简单的方法，打开gitgui,帮助下面有个showsshkey。</strong><br>4.3：<strong>务必一字不错地复制到github，不然会链接不上</strong><br>4.4：<strong>SSH文件一般是在c盘的user（win10是用户）文件夹下有个.ssh文件夹，找不到可以直接搜索.ssh,</strong>                   </p>
+<p>4.1:输入密码的时候命令行是没有东西的，你的键盘没有问题<br>4.2:拿到sshkey还有个简单的方法，打开gitgui,帮助下面有个showsshkey。<br>4.3：务必一字不错地复制到github，不然会链接不上<br>4.4：SSH文件一般是在c盘的user（win10是用户）文件夹下有个.ssh文件夹，找不到可以直接搜索.ssh,                </p>
 </blockquote>
 <p><br></p>
 <h2 id="安装HEXO">安装HEXO</h2><p>详情看赵伟同学的教程。很简单。只要几个命令就可以了。<br><a href="http://zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">hexo系列教程：（二）搭建hexo博客</a>         </p>
 <p>在这里要注意几个事情：      </p>
 <blockquote>
-<p>5.1:<strong>现在版本的deploy文件的type都不写github了，改成git了</strong><br>5.2:<strong>hexo generate 还有 hexo deploy 可以用hexo g 和 hexo d 代替</strong><br>5.3:<strong>deploy文件的repository建议写成 git@github.com:你的用户名/你的用户名.github.io.git，这样就不用每次deploy都写账户和密码了。</strong><br>5.4:<strong>所有的hexo操作都必须在hexo的文件夹中进行，不然无效。在hexo文件夹下右键gitbash就行</strong>                           </p>
+<p>5.1:现在版本的deploy文件的type都不写github了，改成git了<br>5.2:hexo generate 还有 hexo deploy 可以用hexo g 和 hexo d 代替<br>5.3:deploy文件的repository建议写成 git@github.com:你的用户名/你的用户名.github.io.git，这样就不用每次deploy都写账户和密码了。<br>5.4:所有的hexo操作都必须在hexo的文件夹中进行，不然无效。在hexo文件夹下右键gitbash就行                          </p>
 </blockquote>
 <p><br></p>
 <h2 id="配置和使用HEXO">配置和使用HEXO</h2><p>详情请看赵伟同学系列的教程。<a href="http://zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">hexo系列教程：（三）搭建hexo博客</a> </p>
@@ -288,7 +292,7 @@
 </blockquote>
 <p>然后把下下来的文件夹复制到hexo的theme文件夹下。把hexo下面config.yml(注意是hexo下面的，不是主题文件夹下面的那个)theme 属性改为你要替换的主题的文件夹名。</p>
 <blockquote>
-<p>7.1:<strong>修改config文件一定要注意，属性后面写值都要空格，不要deploy会报错。</strong><br>7.2:<strong>更换主题后删除.deploy_git还有db.json文件，重新再hexo g 然后hexo d,不然会出错</strong><br>7.3:<strong>对内容进行更改之后都需要重新hexo g 然后hexo d 才有效果，如果只是本地测试的话不需要。</strong><br>7.4:<strong>上传内容后github需要一两分钟反应，稍等一下。</strong>             </p>
+<p>7.1:修改config文件一定要注意，属性后面写值都要空格，不要deploy会报错。<br>7.2:更换主题后删除.deploy_git还有db.json文件，重新再hexo g 然后hexo d,不然会出错<br>7.3:对内容进行更改之后都需要重新hexo g 然后hexo d 才有效果，如果只是本地测试的话不需要。<br>7.4:上传内容后github需要一两分钟反应，稍等一下。           </p>
 </blockquote>
 <p><br></p>
 <h2 id="我遇到的两个千年难遇的bug">我遇到的两个千年难遇的bug</h2><p>&nbsp;&nbsp;说是千年难遇一点都不夸张，第一个完全不知道咋回事，错误信息是：    </p>
@@ -320,7 +324,7 @@
          <div class="widget-wrap">
          <h3 class="widget-title">Archives</h3>
         <div class="widget">
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">3</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">2</span></li></ul>
           </div>
           </div>
          
@@ -341,19 +345,14 @@
       <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
     </div>
   </div>
-
-
  
+
         <nav class="pagination" role="pagination">
     
     <a class="pull-left" href="/2015/09/24/Java-SSH框架项目经验总结/" style="float: left;">
         ← JavaSSH框架项目经验总结
     </a>
     
-    
-    <a class="pull-right" href="/2015/09/19/hello-world/">
-        Hello World →
-    </a>
     
     
 </nav>
@@ -372,9 +371,10 @@ var duoshuoQuery = {short_name:"doesnta"};
 	 || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
 </script>
-</div>
-    </div>
-        <script src="/js/scrollto.js"></script>
+
+       </div>
+  <script  src="/js/scrollto.js"></script>
+    </div>   
 </section>
 
 
@@ -392,10 +392,10 @@ var duoshuoQuery = {short_name:"doesnta"};
                 </font></p>
                 
                   <div class="footere">
-                    有<span id="busuanzi_value_page_pv"></span>位同学跟这篇文章谈过恋爱。
-                    
+                    有<span id="busuanzi_value_page_pv"></span>位同学跟这篇文章谈过恋爱。   
             </div> 
              
+               
            <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
 <a title="返回顶部"><img src="/img/scrollup.png"/></a>
 </div>
@@ -405,7 +405,7 @@ var duoshuoQuery = {short_name:"doesnta"};
            
             </div>
         </div>
-        
+           
 </footer>
    
 <!-- ============================ END Footer =========================== -->
@@ -418,7 +418,7 @@ var duoshuoQuery = {short_name:"doesnta"};
         var hero = $(".cover,.heightblock"),
             window1 = $(window);
         hero.css({
-            "height": window1.height()
+            "height": window1.height()    
         });
     };
     
@@ -446,6 +446,9 @@ var duoshuoQuery = {short_name:"doesnta"};
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
-      
+
+
+
+     
 </body>
 </html>
