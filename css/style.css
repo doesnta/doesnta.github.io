@@ -311,7 +311,7 @@ input#delivery {
 .herofade,
 .headerfade,
 .videofade {
-	background-color:rgba(68,68,68,0.8);
+	background-color:rgb(68,68,68);
 	width: 100%;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 	-khtml-opacity: .8;
@@ -525,7 +525,7 @@ a.custom-button span {
 /* *******************************************************
 * Autohiding Navbar, (all pages)
 ******************************************************* */
-.logo {   /*logo的位置,position of log*/
+.logo {   /*logo的位置,position of logo*/
 	position: absolute;
 	display: block;
 	top: 50%;
@@ -628,7 +628,7 @@ nav i.icon-basic-eye {
 .lightnav .navbar-inner.lightnav-alt .learnmore {
 	color: #ffffff;
 }
-/* Changes nav background color to white on scroll */
+/* Changes nav background color  on scroll */
 .navbar-inner.lightnav-alt {
 	background-color: #CDB99C;
    

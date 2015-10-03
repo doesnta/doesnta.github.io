@@ -18,7 +18,7 @@
 
 <head>
 <meta name="baidu-site-verification" content="OqBDsVnJX8" />
-  <title>Tag: ssh | Doesnta&#39;s Blog</title>
+  <title>Leetcode java solution: Move Zeroes | Doesnta&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -87,7 +87,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
  <!--百度分享-->
        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["mshare","qzone","tsina","weixin","renren","youdao","isohu","twi","linkedin"],"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"5","bdPos":"left","bdTop":"146.5"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
@@ -214,36 +214,97 @@
         <!-- ============================ END Hero Image =========================== -->
       
 
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/09/24/Java-SSH框架项目经验总结/">JavaSSH框架项目经验总结</a></h4>
-                            
-                            <p><time datetime="2015-09-24T13:41:24.000Z"><a href="/2015/09/24/Java-SSH框架项目经验总结/">2015-09-24</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2" id="s1">
+            <div class="col-md-8" id="s2">
+    			<span class="post-meta">
+      <time datetime="2015-10-03T12:20:13.000Z" itemprop="datePublished">
+          2015-10-03
+      </time>
+    
+    
+    | 
+    <a href='/tags/java/'>java</a>,
+    
+    <a href='/tags/leetcode/'>leetcode</a>
+    
+    
+</span>
+                <h1>Leetcode java solution: Move Zeroes</h1>
+            </div>
         </div>
+        <div class="col-md-8 col-md-offset-2">
+        
+      		<p>leetcode question:</p>
+<blockquote>
+<p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<p>Note:<br>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p>
+</blockquote>
+<p>In this question,we need to keep track on the first zero.if we find the non-zero number,we swap it with the first zero.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> forezero=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> temp;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">               <span class="keyword">if</span>(nums[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">                   temp=nums[forezero];</span><br><span class="line">                   nums[forezero]=nums[i];</span><br><span class="line">                   nums[i]=temp;</span><br><span class="line">                   forezero++;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        
+         <div class="widget-wrap">
+         <h3 class="widget-title">Archives</h3>
+        <div class="widget">
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li></ul>
+          </div>
+          </div>
+         
+         <br/>
+        
+     <div class="widget-wrap">
+       <h3 class="widget-title">Categories</h3>
+      <div class="widget">
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">3</span></li></ul>
+     </div>
+   </div>
+     
+     <br/>
+     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
     </div>
-</section> 
+  </div>
+ 
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>您是第<span id="busuanzi_value_site_uv"></span>个开垦这颗荒芜星球的勇士，之前曾有<span id="busuanzi_value_site_pv"></span>艘飞船在此停留。</p>
-        </div>
-    </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2015/09/29/Maximum-Product-Subarray/">
+        Leetcode java solution: Maximum Product Subarray →
+    </a>
+    
+    
+</nav>
+
+        <div class="duoshuo">
+
+<div class="ds-thread" data-thread-key="2015/10/03/Move-Zeroes/" data-title="Leetcode java solution: Move Zeroes" data-url="http://doesnta.com/2015/10/03/Move-Zeroes/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"doesnta"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+       </div>
+  <script  src="/js/scrollto.js"></script>
+    </div>   
 </section>
+
+
         
       
 <!-- ============================ Footer =========================== -->
@@ -257,6 +318,10 @@
                     &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By doesnta. All Rights Reserved.
                 </font></p>
                 
+                  <div class="footere">
+                    有<span id="busuanzi_value_page_pv"></span>位同学跟这篇文章谈过恋爱。   
+            </div> 
+             
                
            <div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
 <a title="返回顶部"><img src="/img/scrollup.png"/></a>

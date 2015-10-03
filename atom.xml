@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://doesnta.com/"/>
-  <updated>2015-09-29T11:09:46.010Z</updated>
+  <updated>2015-10-03T12:43:31.131Z</updated>
   <id>http://doesnta.com/</id>
   
   <author>
@@ -13,6 +13,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Leetcode java solution: Move Zeroes]]></title>
+    <link href="http://doesnta.com/2015/10/03/Move-Zeroes/"/>
+    <id>http://doesnta.com/2015/10/03/Move-Zeroes/</id>
+    <published>2015-10-03T12:20:13.000Z</published>
+    <updated>2015-10-03T12:43:31.131Z</updated>
+    <content type="html"><![CDATA[<p>leetcode question:</p>
+<blockquote>
+<p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<p>Note:<br>You must do this in-place without making a copy of the array.<br>Minimize the total number of operations.</p>
+</blockquote>
+<p>In this question,we need to keep track on the first zero.if we find the non-zero number,we swap it with the first zero.  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> forezero=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> temp;</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">               <span class="keyword">if</span>(nums[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">                   temp=nums[forezero];</span><br><span class="line">                   nums[forezero]=nums[i];</span><br><span class="line">                   nums[i]=temp;</span><br><span class="line">                   forezero++;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>leetcode question:</p>
+<blockquote>
+<p>Given an array nums, write a function to move all 0’s to the end of it while maintaining the relat]]>
+    </summary>
+    
+      <category term="java" scheme="http://doesnta.com/tags/java/"/>
+    
+      <category term="leetcode" scheme="http://doesnta.com/tags/leetcode/"/>
+    
+      <category term="leetcode" scheme="http://doesnta.com/categories/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Leetcode java solution: Maximum Product Subarray]]></title>
@@ -47,14 +75,14 @@
     <link href="http://doesnta.com/2015/09/29/Majority-Element/"/>
     <id>http://doesnta.com/2015/09/29/Majority-Element/</id>
     <published>2015-09-29T09:46:21.000Z</published>
-    <updated>2015-09-29T10:38:02.249Z</updated>
+    <updated>2015-10-03T12:41:57.331Z</updated>
     <content type="html"><![CDATA[<p>Leetcode Question:</p>
 <blockquote>
 <p>Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.</p>
 <p>You may assume that the array is non-empty and the majority element always exist in the array.</p>
 <p>Credits:<br>Special thanks to @ts for adding this problem and creating all test cases.  </p>
 </blockquote>
-<p>We have so many way to do with this question,for example,we can use the sorting algorithm,putting the same character to the close distince.And then we can find the majority element by scanning the elements.Or we can using the hashtable,the keyvalue will help us a lot.              </p>
+<p>We have so many way to do with this question,for example,we can use the sorting algorithm,putting the same character to the close distince.And then we can find the majority element by scanning the elements.</p>
 <p>But the best solution of this question is Moore Voting algorithm,Time Complexity O(N),Space Complexity O(1).<br>Following is the java solution code:   </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MajorityElement</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Moore Voting algorithm,</span></span><br><span class="line">    <span class="comment">//set the first element candidate,</span></span><br><span class="line">    <span class="comment">//if the next was same with it ,count++,if not,count--;</span></span><br><span class="line">    <span class="comment">//if the count equal 0,set the value of candidate num[i];</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>  candidate=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span>  count =<span class="number">0</span>;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123; </span><br><span class="line">                   <span class="keyword">if</span>(count==<span class="number">0</span>)&#123;</span><br><span class="line">                       candidate=nums[i];</span><br><span class="line">                       count=<span class="number">1</span>;</span><br><span class="line">                   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                       <span class="keyword">if</span>(candidate==nums[i])&#123;</span><br><span class="line">                           count++;</span><br><span class="line">                       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                           count--;</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">    &#125;</span><br><span class="line">            <span class="keyword">return</span> candidate;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><br><br><strong>Official solution and translation:</strong>        </p>
