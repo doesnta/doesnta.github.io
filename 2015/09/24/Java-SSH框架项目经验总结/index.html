@@ -112,13 +112,13 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
+				    <li><a href="/categories/android/" class="animsition-link">android<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/hexo/" class="animsition-link">hexo<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/java/" class="animsition-link">java<small>(1)</small></a></li>
 				    
 				    <li><a href="/categories/leetcode/" class="animsition-link">leetcode<small>(4)</small></a></li>
-				    
-				    <li><a href="/categories/影评/" class="animsition-link">影评<small>(0)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -274,10 +274,10 @@
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span>  <span class="keyword">distinct</span> <span class="keyword">l</span> <span class="keyword">from</span> Ldrk <span class="keyword">l</span> <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.persons <span class="keyword">p</span> <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.persons pp <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.childrens <span class="keyword">left</span> <span class="keyword">join</span> <span class="keyword">l</span>.spzt  s</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h3 id="在页面中做判断">在页面中做判断</h3><p>如果我们要在页面上把拿到的person的男方部分放在前面，女方部分放在后面。（<code>注意，如果关联两表，hibernate输出位置的前后是随机的</code>）（在传统的JavaBean+Servlet+jsp的模式中，一般都是在action中做判断，再输出到页面相关位置。但是正如我前面说的。取值的方式是在action中定义Person person，输出自然也是person.属性名。而且得到的是List，要在action进行判断并不容易。                 </p>
+<h3 id="在页面中做判断">在页面中做判断</h3><p>如果我们要在页面上把拿到的person的男方部分放在前面，女方部分放在后面。（<code>注意，如果关联两表，hibernate输出位置的前后是随机的</code>）（在传统的JavaBean+Servlet+jsp的模式中，一般都是在Servlet中做判断，再输出到页面相关位置。但是正如我前面说的。取值的方式是在action中定义Person person，输出自然也是person.属性名。而且得到的是List，要在action进行判断并不容易。                 </p>
 <p>这时候我们就需要在页面上做判断。下面是一个嵌套循环输出的demo.         </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="title">s:iterator</span> <span class="attribute">value</span>=<span class="value">"ls"</span> <span class="attribute">var</span>=<span class="value">"l"</span> &gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="title">s:iterator</span>  <span class="attribute">value</span>=<span class="value">"persons"</span> <span class="attribute">var</span>=<span class="value">"p"</span> &gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">s:if</span> <span class="attribute">test</span>=<span class="value">"gender=='男'.toString()"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"workadd"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">s:if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">s:iterator</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">s:iterator</span>  <span class="attribute">value</span>=<span class="value">"persons"</span> <span class="attribute">var</span>=<span class="value">"p"</span> &gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">s:if</span> <span class="attribute">test</span>=<span class="value">"gender=='女'.toString()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"workadd"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="title">s:if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">s:iterator</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不知道大家注意到没有，iterator里面的value都是直接写属性名，而不是l.persons,看见了吗，这可就是ssh框架的优势了呢。                  </p>
+<p>不知道大家注意到没有，iterator里面的value都是直接写属性名，而不是l.persons,看见了吗，这可就是ssh框架的优势了呢。(实际上是S标签的优势)                 </p>
 <p><br></p>
 <h2 id="用SSH框架你的脑子需要更活一点">用SSH框架你的脑子需要更活一点</h2><p><br> </p>
 <h3 id="关于hibernate分页的思考">关于hibernate分页的思考</h3><p>因为在做项目的时候，了解到hibernate有两个关于分页的函数。query.setFirstResult();query.setMaxResults();第一个是输出的一个元素，第二个是最多取出多少值。运用这两个函数我们就可以灵活地而简单地操作分页。我谷歌了一下网上有什么用这两个函数做分页的方法（主要是想看有什么我没想到的好方法）。发现大多数人还是用的JavaBean+Servlet+jsp的那套方法做的分页。有些同学甚至连这两个hibernate提供的分页函数都不知道。</p>
@@ -307,7 +307,7 @@
          <div class="widget-wrap">
          <h3 class="widget-title">Archives</h3>
         <div class="widget">
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li></ul>
           </div>
           </div>
          
@@ -316,7 +316,7 @@
      <div class="widget-wrap">
        <h3 class="widget-title">Categories</h3>
       <div class="widget">
-       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">4</span></li></ul>
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">4</span></li></ul>
      </div>
    </div>
      
@@ -325,7 +325,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
+      <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/genymotion/" style="font-size: 10px;">genymotion</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
     </div>
   </div>
  

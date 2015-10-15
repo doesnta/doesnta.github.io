@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://doesnta.com/"/>
-  <updated>2015-10-08T09:18:12.355Z</updated>
+  <updated>2015-10-15T09:37:22.635Z</updated>
   <id>http://doesnta.com/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[genymotion无法拖拽安装apk或者arm的解决方法]]></title>
+    <link href="http://doesnta.com/2015/10/14/genymotion-%E6%97%A0%E6%B3%95%E6%8B%96%E6%8B%BD%E5%AE%89%E8%A3%85apk%E6%88%96%E8%80%85arm%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://doesnta.com/2015/10/14/genymotion-无法拖拽安装apk或者arm的解决方法/</id>
+    <published>2015-10-14T15:17:50.000Z</published>
+    <updated>2015-10-15T09:37:22.635Z</updated>
+    <content type="html"><![CDATA[<p>在github下载了几个源码，想放到genymotion看看效果，刚开始时是从eclipse发布失败，上网一查原来是需要安装ARM的解析器。但是发现根本就拖不上去啊。照了网上的方法搞了了半天。还是一个forbidden的图标。后来灵机一动，用自己的渣英语翻译了一下，就在stackoverflow里面找到了答案。<br><a id="more"></a></p>
+<blockquote>
+<p>步骤一：检查ADB设置，不要用自带，要用默认的，也就是default的tool。              </p>
+<p>步骤二：VB盒子的设置里面高级里面的共享粘贴板和拖放改为双向。                       </p>
+<p>步骤三：不要以管理员状态运行genymotion，右键属性&gt;兼容性。(之前因为升级WIN10<br>为了兼容性设置了这玩意，实际上不选这个也是可以运行的。)            </p>
+<p>步骤四：如果上面的对你不管用。你还可以试试第五个大招。VB设置，共享文件夹。添<br>加一个，选择自动挂载。重启VB就能实现拖放啦。                   </p>
+</blockquote>
+<p><a href="http://stackoverflow.com/questions/20002138/genymotion-2-0-drag-and-drop" target="_blank" rel="external">stackoverflow问题源地址</a></p>
+<blockquote>
+<p>所以喽，这件事告诉我们两个道理。<br> 1.谷歌大法好<br> 2.英语不好不可能成为编程大牛       </p>
+</blockquote>
+<p>努力吧骚年。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在github下载了几个源码，想放到genymotion看看效果，刚开始时是从eclipse发布失败，上网一查原来是需要安装ARM的解析器。但是发现根本就拖不上去啊。照了网上的方法搞了了半天。还是一个forbidden的图标。后来灵机一动，用自己的渣英语翻译了一下，就在stackoverflow里面找到了答案。<br>]]>
+    
+    </summary>
+    
+      <category term="android" scheme="http://doesnta.com/tags/android/"/>
+    
+      <category term="genymotion" scheme="http://doesnta.com/tags/genymotion/"/>
+    
+      <category term="android" scheme="http://doesnta.com/categories/android/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Leetcode java solution: Same Tree]]></title>
@@ -137,7 +169,7 @@
     <link href="http://doesnta.com/2015/09/24/Java-SSH%E6%A1%86%E6%9E%B6%E9%A1%B9%E7%9B%AE%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
     <id>http://doesnta.com/2015/09/24/Java-SSH框架项目经验总结/</id>
     <published>2015-09-24T13:41:24.000Z</published>
-    <updated>2015-09-27T16:56:09.517Z</updated>
+    <updated>2015-10-15T09:34:50.815Z</updated>
     <content type="html"><![CDATA[<p>做完了好久的SSH项目，一直都忘了给个大总结。懒也罢，忙也罢。今天也是时候好好写写SSH那些事了。虽然草草率率地完成了项目，但是也学到了不少东西，毕竟是自己第一次做框架这么大的SSH项目。 </p>
  <a id="more"></a> 
 <p> <br>             </p>
@@ -169,10 +201,10 @@
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span>  <span class="keyword">distinct</span> <span class="keyword">l</span> <span class="keyword">from</span> Ldrk <span class="keyword">l</span> <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.persons <span class="keyword">p</span> <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.persons pp <span class="keyword">inner</span> <span class="keyword">join</span> <span class="keyword">l</span>.childrens <span class="keyword">left</span> <span class="keyword">join</span> <span class="keyword">l</span>.spzt  s</span></span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h3 id="在页面中做判断">在页面中做判断</h3><p>如果我们要在页面上把拿到的person的男方部分放在前面，女方部分放在后面。（<code>注意，如果关联两表，hibernate输出位置的前后是随机的</code>）（在传统的JavaBean+Servlet+jsp的模式中，一般都是在action中做判断，再输出到页面相关位置。但是正如我前面说的。取值的方式是在action中定义Person person，输出自然也是person.属性名。而且得到的是List，要在action进行判断并不容易。                 </p>
+<h3 id="在页面中做判断">在页面中做判断</h3><p>如果我们要在页面上把拿到的person的男方部分放在前面，女方部分放在后面。（<code>注意，如果关联两表，hibernate输出位置的前后是随机的</code>）（在传统的JavaBean+Servlet+jsp的模式中，一般都是在Servlet中做判断，再输出到页面相关位置。但是正如我前面说的。取值的方式是在action中定义Person person，输出自然也是person.属性名。而且得到的是List，要在action进行判断并不容易。                 </p>
 <p>这时候我们就需要在页面上做判断。下面是一个嵌套循环输出的demo.         </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="title">s:iterator</span> <span class="attribute">value</span>=<span class="value">"ls"</span> <span class="attribute">var</span>=<span class="value">"l"</span> &gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="title">s:iterator</span>  <span class="attribute">value</span>=<span class="value">"persons"</span> <span class="attribute">var</span>=<span class="value">"p"</span> &gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="title">s:if</span> <span class="attribute">test</span>=<span class="value">"gender=='男'.toString()"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"workadd"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">s:if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">s:iterator</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">s:iterator</span>  <span class="attribute">value</span>=<span class="value">"persons"</span> <span class="attribute">var</span>=<span class="value">"p"</span> &gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="title">s:if</span> <span class="attribute">test</span>=<span class="value">"gender=='女'.toString()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"name"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">s:property</span> <span class="attribute">value</span>=<span class="value">"workadd"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">td</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="title">s:if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">s:iterator</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不知道大家注意到没有，iterator里面的value都是直接写属性名，而不是l.persons,看见了吗，这可就是ssh框架的优势了呢。                  </p>
+<p>不知道大家注意到没有，iterator里面的value都是直接写属性名，而不是l.persons,看见了吗，这可就是ssh框架的优势了呢。(实际上是S标签的优势)                 </p>
 <p><br></p>
 <h2 id="用SSH框架你的脑子需要更活一点">用SSH框架你的脑子需要更活一点</h2><p><br> </p>
 <h3 id="关于hibernate分页的思考">关于hibernate分页的思考</h3><p>因为在做项目的时候，了解到hibernate有两个关于分页的函数。query.setFirstResult();query.setMaxResults();第一个是输出的一个元素，第二个是最多取出多少值。运用这两个函数我们就可以灵活地而简单地操作分页。我谷歌了一下网上有什么用这两个函数做分页的方法（主要是想看有什么我没想到的好方法）。发现大多数人还是用的JavaBean+Servlet+jsp的那套方法做的分页。有些同学甚至连这两个hibernate提供的分页函数都不知道。</p>
