@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://doesnta.com/"/>
-  <updated>2015-10-16T12:23:09.917Z</updated>
+  <updated>2015-10-22T15:15:40.282Z</updated>
   <id>http://doesnta.com/</id>
   
   <author>
@@ -13,6 +13,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Leetcode java solution: Roman to Integer]]></title>
+    <link href="http://doesnta.com/2015/10/22/Roman-to-Integer/"/>
+    <id>http://doesnta.com/2015/10/22/Roman-to-Integer/</id>
+    <published>2015-10-22T14:28:58.000Z</published>
+    <updated>2015-10-22T15:15:40.282Z</updated>
+    <content type="html"><![CDATA[<p>leetcode question:</p>
+<blockquote>
+<p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+</blockquote>
+<p>we can learn the rule of convert  roman numeral to an integer from <a href="https://en.wikipedia.org/wiki/Roman_numerals" target="_blank" rel="external">wikipedia[Link]</a>.                 </p>
+<p>And the following rule is what we need to solve this problem.            </p>
+<p>1.when the bigger one on the left side of the small one ,add.<br>2.when the above circumstance was reversed, the big one minus the small one.<br>3.only one numeral being reduced in the left.      </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=chartoInt(s.charAt(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length()-<span class="number">1</span>;i++)&#123;</span><br><span class="line">           <span class="keyword">int</span> pre=chartoInt(s.charAt(i));</span><br><span class="line">           <span class="keyword">int</span> cur=chartoInt(s.charAt(i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(pre&gt;=cur)&#123;</span><br><span class="line">                count+=cur;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//Don't forget we assigned the value of count before,so we </span></span><br><span class="line">                <span class="comment">//need to minus two times of pre;And according the rule 3,we</span></span><br><span class="line">                <span class="comment">//don't need to worry about the change of pre;</span></span><br><span class="line">                count=count+cur-<span class="number">2</span>*pre;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">          <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//revert the char to int;</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">chartoInt</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;   </span><br><span class="line">        <span class="keyword">int</span> data = <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">switch</span> (c) &#123;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'I'</span>:  </span><br><span class="line">                data = <span class="number">1</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'V'</span>:  </span><br><span class="line">                data = <span class="number">5</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'X'</span>:  </span><br><span class="line">                data = <span class="number">10</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'L'</span>:  </span><br><span class="line">                data = <span class="number">50</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'C'</span>:  </span><br><span class="line">                data = <span class="number">100</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'D'</span>:  </span><br><span class="line">                data = <span class="number">500</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'M'</span>:  </span><br><span class="line">                data = <span class="number">1000</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">return</span> data;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>leetcode question:</p>
+<blockquote>
+<p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range]]>
+    </summary>
+    
+      <category term="java" scheme="http://doesnta.com/tags/java/"/>
+    
+      <category term="leetcode" scheme="http://doesnta.com/tags/leetcode/"/>
+    
+      <category term="leetcode" scheme="http://doesnta.com/categories/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Leetcode java solution: Excel Sheet Column Number]]></title>
@@ -48,13 +79,13 @@
     <link href="http://doesnta.com/2015/10/14/genymotion-%E6%97%A0%E6%B3%95%E6%8B%96%E6%8B%BD%E5%AE%89%E8%A3%85apk%E6%88%96%E8%80%85arm%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     <id>http://doesnta.com/2015/10/14/genymotion-无法拖拽安装apk或者arm的解决方法/</id>
     <published>2015-10-14T15:17:50.000Z</published>
-    <updated>2015-10-15T09:37:22.635Z</updated>
+    <updated>2015-10-22T14:02:32.548Z</updated>
     <content type="html"><![CDATA[<p>在github下载了几个源码，想放到genymotion看看效果，刚开始时是从eclipse发布失败，上网一查原来是需要安装ARM的解析器。但是发现根本就拖不上去啊。照了网上的方法搞了了半天。还是一个forbidden的图标。后来灵机一动，用自己的渣英语翻译了一下，就在stackoverflow里面找到了答案。<br><a id="more"></a></p>
 <blockquote>
 <p>步骤一：检查ADB设置，不要用自带，要用默认的，也就是default的tool。              </p>
 <p>步骤二：VB盒子的设置里面高级里面的共享粘贴板和拖放改为双向。                       </p>
 <p>步骤三：不要以管理员状态运行genymotion，右键属性&gt;兼容性。(之前因为升级WIN10<br>为了兼容性设置了这玩意，实际上不选这个也是可以运行的。)            </p>
-<p>步骤四：如果上面的对你不管用。你还可以试试第五个大招。VB设置，共享文件夹。添<br>加一个，选择自动挂载。重启VB就能实现拖放啦。                   </p>
+<p>步骤四：如果上面的对你不管用。你还可以试试第四个大招。VB设置，共享文件夹。添<br>加一个，选择自动挂载。重启VB就能实现拖放啦。                   </p>
 </blockquote>
 <p><a href="http://stackoverflow.com/questions/20002138/genymotion-2-0-drag-and-drop" target="_blank" rel="external">stackoverflow问题源地址</a></p>
 <blockquote>
@@ -80,7 +111,7 @@
     <link href="http://doesnta.com/2015/10/08/Same-Tree/"/>
     <id>http://doesnta.com/2015/10/08/Same-Tree/</id>
     <published>2015-10-08T03:18:03.000Z</published>
-    <updated>2015-10-08T09:18:12.355Z</updated>
+    <updated>2015-10-22T14:29:41.398Z</updated>
     <content type="html"><![CDATA[<p>leetcode question：</p>
 <blockquote>
 <p>Given two binary trees, write a function to check if they are equal or not.</p>

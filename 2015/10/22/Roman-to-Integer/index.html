@@ -18,7 +18,7 @@
 
 <head>
 <meta name="baidu-site-verification" content="OqBDsVnJX8" />
-  <title>��ǩ | Doesnta&#39;s Blog</title>
+  <title>Leetcode java solution: Roman to Integer | Doesnta&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -214,81 +214,100 @@
 
     
         <!-- ============================ END Hero Image =========================== -->
-      <section id="intro">
+      
+
+<section id="intro">
     <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-                <h1>��ǩ</h1>
+        <div class="row col-md-offset-2" id="s1">
+            <div class="col-md-8" id="s2">
+    			<span class="post-meta">
+      <time datetime="2015-10-22T14:28:58.000Z" itemprop="datePublished">
+          2015-10-22
+      </time>
+    
+    
+    | 
+    <a href='/tags/java/'>java</a>,
+    
+    <a href='/tags/leetcode/'>leetcode</a>
+    
+    
+</span>
+                <h1>Leetcode java solution: Roman to Integer</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-            
+        
+      		<p>leetcode question:</p>
+<blockquote>
+<p>Given a roman numeral, convert it to an integer.</p>
+<p>Input is guaranteed to be within the range from 1 to 3999.</p>
+</blockquote>
+<p>we can learn the rule of convert  roman numeral to an integer from <a href="https://en.wikipedia.org/wiki/Roman_numerals" target="_blank" rel="external">wikipedia[Link]</a>.                 </p>
+<p>And the following rule is what we need to solve this problem.            </p>
+<p>1.when the bigger one on the left side of the small one ,add.<br>2.when the above circumstance was reversed, the big one minus the small one.<br>3.only one numeral being reduced in the left.      </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=chartoInt(s.charAt(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length()-<span class="number">1</span>;i++)&#123;</span><br><span class="line">           <span class="keyword">int</span> pre=chartoInt(s.charAt(i));</span><br><span class="line">           <span class="keyword">int</span> cur=chartoInt(s.charAt(i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(pre&gt;=cur)&#123;</span><br><span class="line">                count+=cur;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//Don't forget we assigned the value of count before,so we </span></span><br><span class="line">                <span class="comment">//need to minus two times of pre;And according the rule 3,we</span></span><br><span class="line">                <span class="comment">//don't need to worry about the change of pre;</span></span><br><span class="line">                count=count+cur-<span class="number">2</span>*pre;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">          <span class="keyword">return</span> count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//revert the char to int;</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">chartoInt</span><span class="params">(<span class="keyword">char</span> c)</span></span>&#123;   </span><br><span class="line">        <span class="keyword">int</span> data = <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">switch</span> (c) &#123;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'I'</span>:  </span><br><span class="line">                data = <span class="number">1</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'V'</span>:  </span><br><span class="line">                data = <span class="number">5</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'X'</span>:  </span><br><span class="line">                data = <span class="number">10</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'L'</span>:  </span><br><span class="line">                data = <span class="number">50</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'C'</span>:  </span><br><span class="line">                data = <span class="number">100</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'D'</span>:  </span><br><span class="line">                data = <span class="number">500</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">            <span class="keyword">case</span> <span class="string">'M'</span>:  </span><br><span class="line">                data = <span class="number">1000</span>;  </span><br><span class="line">                <span class="keyword">break</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">return</span> data;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
             <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
         
+         <div class="widget-wrap">
+         <h3 class="widget-title">Archives</h3>
+        <div class="widget">
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li></ul>
+          </div>
+          </div>
+         
+         <br/>
+        
+     <div class="widget-wrap">
+       <h3 class="widget-title">Categories</h3>
+      <div class="widget">
+       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/android/">android</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">6</span></li></ul>
+     </div>
+   </div>
+     
+     <br/>
+     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/genymotion/" style="font-size: 10px;">genymotion</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
     </div>
+  </div>
+ 
+
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2015/10/16/Excel-Sheet-Column-Number/">
+        Leetcode java solution: Excel Sheet Column Number →
+    </a>
+    
+    
+</nav>
+
+        <div class="duoshuo">
+
+<div class="ds-thread" data-thread-key="2015/10/22/Roman-to-Integer/" data-title="Leetcode java solution: Roman to Integer" data-url="http://doesnta.com/2015/10/22/Roman-to-Integer/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"doesnta"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+       </div>
+  <script  src="/js/scrollto.js"></script>
+    </div>   
 </section>
-<section id="process">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                <div class="timeline-centered">
-                    <div class="line"></div>
-                    <div class="present">Past</div>
-                    <div class="dot_tp"></div>
-                    <div class="born">Now</div>
-                    <div class="dot_bt"></div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">1</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>2014/06/12-6</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">2</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>2014/11/29-11</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">3</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>2015/02/18-2</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="timeline-entry">
-                            <div class="timeline-entry-inner">
-                                <div class="timeline-icon wow fadeInUp" data-wow-delay="0.2s">
-                                    <span class="number">4</span>
-                                </div>
-                                <div class="timeline-label wow fadeInUp" data-wow-delay="0.2s">
-                                    <p>More</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                </div>
-                <!-- timeline-centered -->
-            </div>
-        </div>
-    </div>
-</section>
+
 
         
       
