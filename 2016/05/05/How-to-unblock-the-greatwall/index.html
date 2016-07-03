@@ -18,7 +18,7 @@
 
 <head>
 <meta name="baidu-site-verification" content="OqBDsVnJX8" />
-  <title>Leetcode java solution: Excel Sheet Column Number | Doesnta&#39;s Blog</title>
+  <title>科学上网的正确姿势 | Doesnta&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -223,30 +223,51 @@
         <div class="row col-md-offset-2" id="s1">
             <div class="col-md-8" id="s2">
     			<span class="post-meta">
-      <time datetime="2015-10-16T11:54:45.000Z" itemprop="datePublished">
-          2015-10-16
+      <time datetime="2016-05-05T09:38:38.000Z" itemprop="datePublished">
+          2016-05-05
       </time>
     
     
     | 
-    <a href='/tags/java/'>java</a>,
+    <a href='/tags/VPN/'>VPN</a>,
     
-    <a href='/tags/leetcode/'>leetcode</a>
+    <a href='/tags/shadowsocks/'>shadowsocks</a>,
+    
+    <a href='/tags/翻墙/'>翻墙</a>
     
     
 </span>
-                <h1>Leetcode java solution: Excel Sheet Column Number</h1>
+                <h1>科学上网的正确姿势</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
         
-      		<p>leetcode question:</p>
+         <div id="toc" class="toc-article">
+         <strong class="toc-title">文章目录</strong>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#免费方案"><span class="toc-text">免费方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-shadowsocks（手机+电脑）"><span class="toc-text">1.shadowsocks（手机+电脑）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-cloudvpn（手机）"><span class="toc-text">2.cloudvpn（手机）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-赛风_（手机）"><span class="toc-text">3.赛风 （手机）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-V2Ray_和_XX-Net_（电脑）"><span class="toc-text">4.V2Ray 和 XX-Net （电脑）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#付费方案"><span class="toc-text">付费方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-shadowsocks"><span class="toc-text">1.shadowsocks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-_GreenVPN"><span class="toc-text">2. GreenVPN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-云梯"><span class="toc-text">3.云梯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-云影"><span class="toc-text">4.云影</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-佛跳墙"><span class="toc-text">5.佛跳墙</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-VPNSO"><span class="toc-text">6.VPNSO</span></a></li></ol></li></ol>
+          </div>
+         
+      		<p>大概是去年左右，百度贴吧开始商业化。作为一个大吧的吧主也终于受不了,逃离了百度。那时候插件上网无比简单，红杏还只要8块一个月，轻轻松松就能科学上网。但是好景不长，随着VPN的增多，越来越多人被请去喝茶，墙也在更新后一夜变高。写下这篇文章，给后人乘凉。<br><a id="more"></a></p>
+<p><br></p>
+<h3 id="免费方案">免费方案</h3><p>缺点：不稳定，有广告，或者需要经常更新密码。</p>
+<h4 id="1-shadowsocks（手机+电脑）">1.shadowsocks（手机+电脑）</h4><p>给两个比较靠谱的网站：               </p>
 <blockquote>
-<p>Related to question Excel Sheet Column Title</p>
-<p>Given a column title as appear in an Excel sheet, return its corresponding column number.                                  </p>
-<p>For example:<br>A -&gt; 1<br>B -&gt; 2<br>C -&gt; 3<br>…<br>Z -&gt; 26<br>AA -&gt; 27<br>AB -&gt; 28 </p>
+<p>1.1 <a href="http://www.ishadowsocks.net/" target="_blank" rel="external">http://www.ishadowsocks.net/</a>                            </p>
+<p>1.2 <a href="http://freeshadowsocks.cf/" target="_blank" rel="external">http://freeshadowsocks.cf/</a>                      </p>
 </blockquote>
-<p>we can find rule from those example,when it was A,the first element of the alphabet,the output was 1.when it done one loop,the output equal the old output<br>plus 26 and add old output itself.<br><br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">titleToNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> pre=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">           pre=s.charAt(i)-<span class="string">'A'</span>+<span class="number">1</span>;</span><br><span class="line">           num=num*<span class="number">26</span>+pre;</span><br><span class="line">         </span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> num;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这两个网站的密码24小时换一次。比较方便的是1.2的，有二维码。因为如果你下了手机版的ss配套的扫码器，只要扫一下码就可以用了。            </p>
+<p>如果你不知道怎么用SS或者没有下载途径的话看这里：<a href="https://ttt.tt/150/" target="_blank" rel="external">https://ttt.tt/150/</a> 如果下载链接被屏蔽，在bing上面搜影梭+安卓或者IPHONE，或者shadowsock+安卓或者IPHONE即可。<br>专用的扫码器在酷安的酷市场可以找到。                      </p>
+<h4 id="2-cloudvpn（手机）">2.cloudvpn（手机）</h4><p>目前用过最靠谱的了。之前用蓝灯，还有很多VPN真的一点速度都没有的。这个速度还可以。偶尔会抽筋。                                       </p>
+<h4 id="3-赛风_（手机）">3.赛风 （手机）</h4><p>一般，cloudvpn抽风了再用。                </p>
+<h4 id="4-V2Ray_和_XX-Net_（电脑）">4.V2Ray 和 XX-Net （电脑）</h4><p>开源的几个翻墙软件都不是很好用。包括蓝灯Lantern。V2ray和XX-net也是开源的。V2是速度不行。xx——net配置特麻烦。有兴趣的自己去试试吧。网址如下：<br><a href="https://www.v2ray.com/" target="_blank" rel="external">https://www.v2ray.com/</a><br><a href="https://github.com/XX-net/XX-Net" target="_blank" rel="external">https://github.com/XX-net/XX-Net</a>                </p>
+<p><br></p>
+<h3 id="付费方案">付费方案</h3><p>优点：速度稳定。使用方便。                    </p>
+<h4 id="1-shadowsocks">1.shadowsocks</h4><p><a href="https://shadowsocks.com/" target="_blank" rel="external">https://shadowsocks.com/</a><br>只有SS连接方式。由shadowsock的原作者经营的，比较靠谱。                  </p>
+<h4 id="2-_GreenVPN">2. GreenVPN</h4><p><a href="http://gjsq.me/1438224" target="_blank" rel="external">http://gjsq.me/1438224</a><br>只有VPN连接方式。冒牌太多，个人买过半年的会员，使用感不怎么样，速度太慢，实在对不起这钱。我必须说明一下，VPN在校园网是不可用的。不过也感谢它不能用，我才找到了shadowsocks，速度真的美好多了。     </p>
+<h4 id="3-云梯">3.云梯</h4><p><a href="https://www.wildvline.com/" target="_blank" rel="external">https://www.wildvline.com/</a><br>只有VPN连接方式。靠谱。                           </p>
+<h4 id="4-云影">4.云影</h4><p><a href="http://www.cloudss.net/" target="_blank" rel="external">http://www.cloudss.net/</a><br>只有SS连接方式。用了很久，系统挺贴心的，可以看剩余流量，还有发票。就是比其他的贵。                           </p>
+<h4 id="5-佛跳墙">5.佛跳墙</h4><p><a href="http://www.godusevpn.mobi/" target="_blank" rel="external">http://www.godusevpn.mobi/</a><br>SS和VPN连接方式都有，速度还行。就是系统太不人性化了，打钱之后还要跟客服说才行。有点不放心。                  </p>
+<h4 id="6-VPNSO">6.VPNSO</h4><p><a href="https://vpnso.com/main.php" target="_blank" rel="external">https://vpnso.com/main.php</a><br>东哥的VPNSO,靠谱。<br><br><br>这种好东西大家不要声张，自己揣兜里好好享受就好。祝大家每天开心~~~~</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
@@ -280,13 +301,9 @@
 
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/10/22/Roman-to-Integer/" style="float: left;">
-        ← Leetcode java solution: Roman to Integer
-    </a>
     
-    
-    <a class="pull-right" href="/2015/10/14/genymotion-无法拖拽安装apk或者arm的解决方法/">
-        genymotion无法拖拽安装apk或者arm的解决方法 →
+    <a class="pull-right" href="/2015/11/06/Climbing-Stairs/">
+        Leetcode java solution:ClimbingStairs →
     </a>
     
     
@@ -294,7 +311,7 @@
 
         <div class="duoshuo">
 
-<div class="ds-thread" data-thread-key="2015/10/16/Excel-Sheet-Column-Number/" data-title="Leetcode java solution: Excel Sheet Column Number" data-url="http://doesnta.com/2015/10/16/Excel-Sheet-Column-Number/"></div>
+<div class="ds-thread" data-thread-key="2016/05/05/How-to-unblock-the-greatwall/" data-title="科学上网的正确姿势" data-url="http://doesnta.com/2016/05/05/How-to-unblock-the-greatwall/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"doesnta"};
 (function() {
