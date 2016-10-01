@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://doesnta.com/"/>
-  <updated>2016-07-03T06:18:53.361Z</updated>
+  <updated>2016-10-01T13:25:40.705Z</updated>
   <id>http://doesnta.com/</id>
   
   <author>
@@ -13,6 +13,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[single-number]]></title>
+    <link href="http://doesnta.com/2016/10/01/single-number/"/>
+    <id>http://doesnta.com/2016/10/01/single-number/</id>
+    <published>2016-10-01T11:35:44.000Z</published>
+    <updated>2016-10-01T13:25:40.705Z</updated>
+    <content type="html"><![CDATA[<p>leetcode question：      </p>
+<blockquote>
+<p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+<p>Note:<br>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?          </p>
+</blockquote>
+<p>Solve this problem with HashSet：           </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">       HashSet&lt;Integer&gt; set=<span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">        <span class="comment">//when num can't add to the set ,it mean the number already existed;</span></span><br><span class="line">           <span class="keyword">if</span>(!set.add(num))&#123;</span><br><span class="line">               set.remove(num);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span>  set.iterator().next();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>The more elegant and decant way to solve this problem:            </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">      <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">         result=result^num;</span><br><span class="line">       &#125;   </span><br><span class="line">     <span class="keyword">return</span> result;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>XOR(^)has the following properties:<br>a^0=a<br>a^a=0</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>leetcode question：      </p>
+<blockquote>
+<p>Given an array of integers, every element appears twice except for one. Find that single one]]>
+    </summary>
+    
+      <category term="java" scheme="http://doesnta.com/tags/java/"/>
+    
+      <category term="leetcode" scheme="http://doesnta.com/tags/leetcode/"/>
+    
+      <category term="leetcode" scheme="http://doesnta.com/categories/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[科学上网的正确姿势]]></title>
