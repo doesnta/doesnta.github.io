@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://doesnta.com/"/>
-  <updated>2016-10-01T13:25:40.705Z</updated>
+  <updated>2016-11-06T08:24:41.258Z</updated>
   <id>http://doesnta.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[single-number]]></title>
-    <link href="http://doesnta.com/2016/10/01/single-number/"/>
-    <id>http://doesnta.com/2016/10/01/single-number/</id>
+    <title><![CDATA[Leetcode java solution: Single Number]]></title>
+    <link href="http://doesnta.com/2016/10/01/Single-Number/"/>
+    <id>http://doesnta.com/2016/10/01/Single-Number/</id>
     <published>2016-10-01T11:35:44.000Z</published>
-    <updated>2016-10-01T13:25:40.705Z</updated>
+    <updated>2016-11-06T08:24:41.258Z</updated>
     <content type="html"><![CDATA[<p>leetcode question：      </p>
 <blockquote>
 <p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
@@ -27,9 +27,9 @@
 </blockquote>
 <p>Solve this problem with HashSet：           </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">       HashSet&lt;Integer&gt; set=<span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">        <span class="comment">//when num can't add to the set ,it mean the number already existed;</span></span><br><span class="line">           <span class="keyword">if</span>(!set.add(num))&#123;</span><br><span class="line">               set.remove(num);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span>  set.iterator().next();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>The more elegant and decant way to solve this problem:            </p>
+<p><br><br>The more elegant and decant way to solve this problem:            </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">      <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">         result=result^num;</span><br><span class="line">       &#125;   </span><br><span class="line">     <span class="keyword">return</span> result;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>XOR(^)has the following properties:<br>a^0=a<br>a^a=0</p>
+<p><br><br>XOR(^)has the following properties:<br>a^0=a<br>a^a=0</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>leetcode question：      </p>
@@ -89,11 +89,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[Leetcode java solution:ClimbingStairs]]></title>
+    <title><![CDATA[Leetcode java solution:Climbing Stairs]]></title>
     <link href="http://doesnta.com/2015/11/06/Climbing-Stairs/"/>
     <id>http://doesnta.com/2015/11/06/Climbing-Stairs/</id>
     <published>2015-11-05T16:31:09.000Z</published>
-    <updated>2016-01-20T13:37:07.150Z</updated>
+    <updated>2016-10-01T13:31:19.048Z</updated>
     <content type="html"><![CDATA[<p>leetcode question:            </p>
 <blockquote>
 <p>You are climbing a stair case. It takes n steps to reach to the top.</p>

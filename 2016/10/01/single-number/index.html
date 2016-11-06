@@ -18,7 +18,7 @@
 
 <head>
 <meta name="baidu-site-verification" content="OqBDsVnJX8" />
-  <title>single-number | Doesnta&#39;s Blog</title>
+  <title>Leetcode java solution: Single Number | Doesnta&#39;s Blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -235,7 +235,7 @@
     
     
 </span>
-                <h1>single-number</h1>
+                <h1>Leetcode java solution: Single Number</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
@@ -247,9 +247,9 @@
 </blockquote>
 <p>Solve this problem with HashSet：           </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">       HashSet&lt;Integer&gt; set=<span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">        <span class="comment">//when num can't add to the set ,it mean the number already existed;</span></span><br><span class="line">           <span class="keyword">if</span>(!set.add(num))&#123;</span><br><span class="line">               set.remove(num);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span>  set.iterator().next();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>The more elegant and decant way to solve this problem:            </p>
+<p><br><br>The more elegant and decant way to solve this problem:            </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123; </span><br><span class="line">      <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">         result=result^num;</span><br><span class="line">       &#125;   </span><br><span class="line">     <span class="keyword">return</span> result;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>XOR(^)has the following properties:<br>a^0=a<br>a^a=0</p>
+<p><br><br>XOR(^)has the following properties:<br>a^0=a<br>a^a=0</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
@@ -293,7 +293,7 @@
 
         <div class="duoshuo">
 
-<div class="ds-thread" data-thread-key="2016/10/01/single-number/" data-title="single-number" data-url="http://doesnta.com/2016/10/01/single-number/"></div>
+<div class="ds-thread" data-thread-key="2016/10/01/Single-Number/" data-title="Leetcode java solution: Single Number" data-url="http://doesnta.com/2016/10/01/Single-Number/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"doesnta"};
 (function() {
